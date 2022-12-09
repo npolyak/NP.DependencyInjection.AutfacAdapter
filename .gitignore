@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/TESTS/AutfactAdapterTests/obj
+/TESTS/Implementations/bin/Debug/net6.0
+/TESTS/Implementations/obj
+/TESTS/Interfaces/.vs/Interfaces/v17
+/TESTS/Interfaces/bin/Debug/net6.0
+/TESTS/Interfaces/obj
