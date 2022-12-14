@@ -1,7 +1,6 @@
 ﻿using Autofac;
 using NP.DependencyInjection.Interfaces;
 using NP.IoC.CommonImplementations;
-using NP.Utilities;
 
 namespace AutofacAdapter
 {

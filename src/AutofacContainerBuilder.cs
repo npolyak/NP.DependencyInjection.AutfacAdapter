@@ -57,7 +57,11 @@ namespace AutofacAdapter
             RegisterSingletonInstance(typeof(IResolvingCell), cell, key);
         }
 
-        protected override void RegisterAttributedType(Type resolvingType, Type typeToResolve, object? resolutionKey = null)
+        protected override void RegisterAttributedType
+        (
+            Type resolvingType, 
+            Type typeToResolve, 
+            object? resolutionKey = null)
         {
             Preregister(resolvingType, resolutionKey);
 

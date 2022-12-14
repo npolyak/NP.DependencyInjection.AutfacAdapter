@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Implementations", "..\Imple
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "..\Interfaces\Interfaces.csproj", "{B4BE213B-EF52-467B-9A20-AB7EEA5F7A55}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.Utilities", "..\..\SubModules\NP.Utilities\src\NP.Utilities.csproj", "{82079C6C-53DB-4F5A-9634-B02B5A3F52EA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.IoC.CommonImplementations", "..\..\SubModules\NP.IoC.CommonImplementations\src\NP.IoC.CommonImplementations.csproj", "{A1512617-FB1A-4769-81F2-D28800949CF4}"
 EndProject
 Global
@@ -45,10 +43,6 @@ Global
 		{B4BE213B-EF52-467B-9A20-AB7EEA5F7A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4BE213B-EF52-467B-9A20-AB7EEA5F7A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4BE213B-EF52-467B-9A20-AB7EEA5F7A55}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82079C6C-53DB-4F5A-9634-B02B5A3F52EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82079C6C-53DB-4F5A-9634-B02B5A3F52EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82079C6C-53DB-4F5A-9634-B02B5A3F52EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82079C6C-53DB-4F5A-9634-B02B5A3F52EA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A1512617-FB1A-4769-81F2-D28800949CF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A1512617-FB1A-4769-81F2-D28800949CF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1512617-FB1A-4769-81F2-D28800949CF4}.Release|Any CPU.ActiveCfg = Release|Any CPU

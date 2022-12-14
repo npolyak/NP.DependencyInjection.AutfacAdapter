@@ -2,7 +2,6 @@
 using Autofac;
 using NP.IoC.CommonImplementations;
 using Autofac.Core;
-using NP.Utilities;
 
 namespace AutofacAdapter
 {
