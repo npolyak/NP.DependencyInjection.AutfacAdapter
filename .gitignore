@@ -8,3 +8,7 @@
 /TESTS/Interfaces/.vs/Interfaces/v17
 /TESTS/Interfaces/bin/Debug/net6.0
 /TESTS/Interfaces/obj
+/src/bin/Debug/net6.0
+/src/obj
+/TESTS/AutfactAdapterTests/.vs
+/TESTS/AutfactAdapterTests/bin/Debug/net6.0
