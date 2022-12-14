@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutofacAdapterTests", "Auto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.DependencyInjection", "..\..\SubModules\NP.DependencyInjection\src\NP.DependencyInjection.csproj", "{F8DEBBC9-59DF-4222-8FB8-C2F5DF867481}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutofacAdapter", "..\..\src\AutofacAdapter.csproj", "{6CEF8B78-A77C-4FEE-811E-C7607012DEBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NP.DependencyInjection.AutofacAdapter", "..\..\src\NP.DependencyInjection.AutofacAdapter.csproj", "{6CEF8B78-A77C-4FEE-811E-C7607012DEBD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TESTS", "TESTS", "{B939B562-2AD4-4EFC-A815-BB8241D27CB2}"
 EndProject

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <ProjectReference Include="..\..\src\AutofacAdapter.csproj" />
+	  <ProjectReference Include="..\..\src\NP.DependencyInjection.AutofacAdapter.csproj" />
 	  <ProjectReference Include="..\Implementations\Implementations.csproj" />
 	  <ProjectReference Include="..\Interfaces\Interfaces.csproj" />
   </ItemGroup>

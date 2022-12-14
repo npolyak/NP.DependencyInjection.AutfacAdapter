@@ -1,4 +1,4 @@
-﻿namespace AutofacAdapter
+﻿namespace NP.DependencyInjection.AutofacAdapter
 {
     internal interface IResolvingCell
     {

@@ -1,5 +1,4 @@
-﻿using Autofac;
-using AutofacAdapter;
+﻿using NP.DependencyInjection.AutofacAdapter;
 using FluentAssertions;
 using NP.DependencyInjection.Interfaces;
 using NP.Samples.Implementations;

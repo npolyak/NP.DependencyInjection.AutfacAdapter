@@ -3,7 +3,7 @@ using Autofac;
 using NP.IoC.CommonImplementations;
 using Autofac.Core;
 
-namespace AutofacAdapter
+namespace NP.DependencyInjection.AutofacAdapter
 {
     internal static class AutofacHelper
     {

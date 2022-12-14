@@ -2,7 +2,7 @@
 using NP.DependencyInjection.Interfaces;
 using NP.IoC.CommonImplementations;
 
-namespace AutofacAdapter
+namespace NP.DependencyInjection.AutofacAdapter
 {
     public class AutofacContainerAdapter : AbstractContainer, IDependencyInjectionContainer
     {

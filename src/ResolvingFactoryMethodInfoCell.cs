@@ -1,7 +1,7 @@
 ﻿using NP.IoC.CommonImplementations;
 using System.Reflection;
 
-namespace AutofacAdapter
+namespace NP.DependencyInjection.AutofacAdapter
 {
     internal class ResolvingFactoryMethodInfoCell : IResolvingCell
     {

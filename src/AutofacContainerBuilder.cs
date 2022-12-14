@@ -1,15 +1,13 @@
 ﻿using Autofac;
 using Autofac.Builder;
-using Autofac.Core;
 using Autofac.Core.Activators.ProvidedInstance;
 using Autofac.Core.Lifetime;
 using NP.DependencyInjection.Attributes;
 using NP.DependencyInjection.Interfaces;
 using NP.IoC.CommonImplementations;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 
-namespace AutofacAdapter
+namespace NP.DependencyInjection.AutofacAdapter
 {
     public class AutofacContainerBuilder : AbstractContainerBuilder, IContainerBuilder
     {
