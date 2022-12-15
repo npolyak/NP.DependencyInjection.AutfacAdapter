@@ -15,5 +15,4 @@
 	  <ProjectReference Include="..\SubModules\NP.DependencyInjection\src\NP.DependencyInjection.csproj" />
 	  <ProjectReference Include="..\SubModules\NP.IoC.CommonImplementations\src\NP.IoC.CommonImplementations.csproj" />
   </ItemGroup>
-
 </Project>
