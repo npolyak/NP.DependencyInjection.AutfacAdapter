@@ -12,3 +12,4 @@
 /src/obj
 /TESTS/AutfactAdapterTests/.vs
 /TESTS/AutfactAdapterTests/bin/Debug/net6.0
+*.nupkg

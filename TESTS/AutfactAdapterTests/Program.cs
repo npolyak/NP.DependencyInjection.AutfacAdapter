@@ -4,6 +4,7 @@ using NP.DependencyInjection.Interfaces;
 using NP.Samples.Implementations;
 using NP.Samples.Interfaces;
 using System.Reflection;
+using Autofac;
 
 namespace AutofacAdapterTests
 {
@@ -175,9 +176,9 @@ namespace AutofacAdapterTests
 
             IContainerBuilder containerBuilder4 = new AutofacContainerBuilder();
 
-            containerBuilder4.RegisterAttributedType(typeof(AnotherOrg));
-            containerBuilder4.RegisterAttributedType(typeof(AnotherPerson));
-            containerBuilder4.RegisterAttributedType(typeof(ConsoleLog));
+            containerBuilder4.RegisterAttributedClass(typeof(AnotherOrg));
+            containerBuilder4.RegisterAttributedClass(typeof(AnotherPerson));
+            containerBuilder4.RegisterAttributedClass(typeof(ConsoleLog));
             containerBuilder4.RegisterType<IAddress, Address>("TheAddress");
 
             var container4 = containerBuilder4.Build();
@@ -194,12 +195,34 @@ namespace AutofacAdapterTests
 
             container4.IsSingleton<IOrgGettersOnly>("TheOrg").Should().NotBe(true);
 
-
-
             orgGettersOnly.Manager.Address.Should().NotBeNull();
 
             // make sure ILog is a singleton.
             container4.IsSingleton<ILog>().Should().BeTrue();
+
+            IContainerBuilder containerBuilder5 = new AutofacContainerBuilder();
+
+            containerBuilder5.RegisterAttributedStaticFactoryMethodsFromClass(typeof(FactoryMethods));
+
+            var container5 = containerBuilder5.Build();
+
+            IOrg org5 = container5.Resolve<IOrg>("TheOrg");
+
+            org5.OrgName.Should().Be("Other Department Store");
+            org5.Manager.PersonName.Should().Be("Joe Doe");
+            org5.Manager.Address.City.Should().Be("Providence");
+
+            IOrg anotherOrg5 = container5.Resolve<IOrg>("TheOrg");
+
+            org5.Should().NotBeSameAs(anotherOrg5);
+            org5.Manager.Should().BeSameAs(anotherOrg5.Manager);
+
+            IAddress address5 = container5.Resolve<IAddress>("TheAddress");
+
+            address5.Should().NotBeSameAs(org5.Manager.Address);
+
+            Console.WriteLine("THE END");
+
 
             Console.ReadKey();
         }
