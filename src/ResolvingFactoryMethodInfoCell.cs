@@ -16,7 +16,7 @@ namespace NP.DependencyInjection.AutofacAdapter
         }
 
         private object? _obj;
-        public object? GetObj(AutofacContainerAdapter objectComposer)
+        public object? GetObj(IObjComposer objectComposer)
         {
             // if singleton - only assign first time
             // otherwise (if not singleton) - every time

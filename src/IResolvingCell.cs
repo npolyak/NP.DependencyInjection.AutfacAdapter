@@ -1,7 +1,9 @@
-﻿namespace NP.DependencyInjection.AutofacAdapter
+﻿using NP.IoC.CommonImplementations;
+
+namespace NP.DependencyInjection.AutofacAdapter
 {
     internal interface IResolvingCell
     {
-        object? GetObj(AutofacContainerAdapter objectComposer);
+        object? GetObj(IObjComposer objectComposer);
     }
 }

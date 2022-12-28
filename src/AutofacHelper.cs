@@ -43,7 +43,7 @@ namespace NP.DependencyInjection.AutofacAdapter
             return builder.RegisterType(typeToResolve).RegImpl(resolvingType, typeToResolve, resolutionKey);
         }
 
-        public static bool MatchesService(this FullContainerItemResolvingKey key, Service? service)
+        public static bool MatchesService<TKey>(this FullContainerItemResolvingKey<TKey> key, Service? service)
         {
             if (service is KeyedService keyedService)
             {

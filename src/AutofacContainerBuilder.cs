@@ -9,19 +9,20 @@ using System.Reflection;
 
 namespace NP.DependencyInjection.AutofacAdapter
 {
-    public class AutofacContainerBuilder : AbstractContainerBuilder, IContainerBuilder
+    public class AutofacContainerBuilder : AbstractContainerBuilder<object?>, IContainerBuilder<object?>
     {
         ContainerBuilder _builder = new ContainerBuilder();
         Autofac.Core.Container? _container = null;
 
-        Dictionary<FullContainerItemResolvingKey, object> _instances { get; } = new Dictionary<FullContainerItemResolvingKey, object>();
+        Dictionary<FullContainerItemResolvingKey<object?>, object> _instances { get; } = new Dictionary<FullContainerItemResolvingKey<object?>, object>();
 
-        List<FullContainerItemResolvingKey> _unresgisteredResolutionKeys =
-            new List<FullContainerItemResolvingKey>();
+        List<FullContainerItemResolvingKey<object?>> _unresgisteredResolutionKeys =
+            new List<FullContainerItemResolvingKey<object?>>();
 
         private void Preregister(Type resolvingType, object? resolutionKey = null)
         {
-            FullContainerItemResolvingKey key = new FullContainerItemResolvingKey(resolvingType, resolutionKey);
+            FullContainerItemResolvingKey<object?> key = 
+                new FullContainerItemResolvingKey<object?>(resolvingType, resolutionKey);
 
             _unresgisteredResolutionKeys.RemoveAll(k => k == key);
         }
@@ -51,7 +52,8 @@ namespace NP.DependencyInjection.AutofacAdapter
         {
             var cell = new ResolvingFactoryMethodInfoCell(factoryMethodInfo, isSingleton);
             resolvingType = factoryMethodInfo.GetAndCheckResolvingType(resolvingType);
-            FullContainerItemResolvingKey key = new FullContainerItemResolvingKey(resolvingType, resolutionKey);
+            FullContainerItemResolvingKey<object?> key = 
+                new FullContainerItemResolvingKey<object?>(resolvingType, resolutionKey);
             RegisterSingletonInstance(typeof(IResolvingCell), cell, key);
         }
 
@@ -74,7 +76,8 @@ namespace NP.DependencyInjection.AutofacAdapter
             }
             else
             {
-                (_builder.Reg(resolvingType, typeToResolve, resolutionKey) as IRegistrationBuilder<object, ConcreteReflectionActivatorData, SingleRegistrationStyle>)
+                (_builder.Reg(resolvingType, typeToResolve, resolutionKey) as 
+                    IRegistrationBuilder<object, ConcreteReflectionActivatorData, SingleRegistrationStyle>)
                     .FindConstructorsWith(type => new[] { constructorInfo });
             }
         }
@@ -95,7 +98,8 @@ namespace NP.DependencyInjection.AutofacAdapter
             }
             else
             {
-                (_builder.Reg(resolvingType, typeToResolve, resolutionKey) as IRegistrationBuilder<object, ConcreteReflectionActivatorData, SingleRegistrationStyle>)
+                (_builder.Reg(resolvingType, typeToResolve, resolutionKey) as 
+                    IRegistrationBuilder<object, ConcreteReflectionActivatorData, SingleRegistrationStyle>)
                 .FindConstructorsWith(type =>
                 {
                     return new[] { constructorInfo };
@@ -111,7 +115,7 @@ namespace NP.DependencyInjection.AutofacAdapter
         {
             Preregister(resolvingType, resolutionKey);
 
-            FullContainerItemResolvingKey key = new FullContainerItemResolvingKey(resolvingType, resolutionKey);
+            FullContainerItemResolvingKey<object?> key = new FullContainerItemResolvingKey<object?>(resolvingType, resolutionKey);
 
             _instances[key] = instance;
 
@@ -143,9 +147,10 @@ namespace NP.DependencyInjection.AutofacAdapter
             RegisterMethodInfoCell(factoryMethodInfo, false, resolvingType, resolutionKey);
         }
 
-        public void UnRegister(Type resolvingType, object? resolutionKey)
+        public void UnRegister(Type resolvingType, object? resolutionKey = null)
         {
-            FullContainerItemResolvingKey key = new FullContainerItemResolvingKey(resolvingType, resolutionKey);
+            FullContainerItemResolvingKey<object?> key = 
+                new FullContainerItemResolvingKey<object?>(resolvingType, resolutionKey);
 
             _instances.Remove(key);
 
@@ -194,7 +199,7 @@ namespace NP.DependencyInjection.AutofacAdapter
             return result;
         }
 
-        public virtual IDependencyInjectionContainer Build()
+        public virtual IDependencyInjectionContainer<object?> Build()
         {
             _container = (Autofac.Core.Container)_builder.Build();
             _builder = CreateBuilderFromContainer();

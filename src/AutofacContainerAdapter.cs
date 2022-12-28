@@ -4,11 +4,14 @@ using NP.IoC.CommonImplementations;
 
 namespace NP.DependencyInjection.AutofacAdapter
 {
-    public class AutofacContainerAdapter : AbstractContainer, IDependencyInjectionContainer
+    public class AutofacContainerAdapter :
+        AbstractContainer<object?>, 
+        IDependencyInjectionContainer<object?>,
+        IObjComposer
     {
         public Autofac.Core.Container AutofacContainer { get; }
 
-        private object? ResolveObj(FullContainerItemResolvingKey fullResolvingKey)
+        private object? ResolveObj(FullContainerItemResolvingKey<object?> fullResolvingKey)
         {
             if (fullResolvingKey.KeyObject == null)
             {
@@ -36,7 +39,7 @@ namespace NP.DependencyInjection.AutofacAdapter
             AutofacContainer = container;
         }
 
-        protected override object? ResolveKey(FullContainerItemResolvingKey fullResolvingKey)
+        protected override object? ResolveKey(FullContainerItemResolvingKey<object?> fullResolvingKey)
         {
             object? obj = ResolveObj(fullResolvingKey);
 

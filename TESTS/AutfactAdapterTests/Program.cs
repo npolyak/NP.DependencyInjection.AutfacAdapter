@@ -12,7 +12,7 @@ namespace AutofacAdapterTests
     {
         public static bool IsSingleton<T>
         (
-            this IDependencyInjectionContainer container,
+            this IDependencyInjectionContainer<object?> container,
             object key = null
         )
         {
@@ -45,7 +45,7 @@ namespace AutofacAdapterTests
         }
 
 
-        public static void TestOrg(this IDependencyInjectionContainer container, bool isSingleton, object key = null)
+        public static void TestOrg(this IDependencyInjectionContainer<object?> container, bool isSingleton, object key = null)
         {
             container.IsSingleton<IOrg>(key).Should().Be(isSingleton);
             IOrg org = container.Resolve<IOrg>(key);
@@ -56,7 +56,7 @@ namespace AutofacAdapterTests
         public static void Main(string[] args)
         {
             // create container builder
-            IContainerBuilder containerBuilder = new AutofacContainerBuilder();
+            var containerBuilder = new AutofacContainerBuilder();
 
             #region BOOTSTRAPPING
             // bootstrap container 
@@ -70,7 +70,7 @@ namespace AutofacAdapterTests
             #endregion BOOTSTRAPPING
 
             // Create container
-            IDependencyInjectionContainer container = containerBuilder.Build();
+            var container = containerBuilder.Build();
 
             // resolve and compose organization
             // all its 'Parts' will be added at
@@ -116,7 +116,7 @@ namespace AutofacAdapterTests
             containerBuilder.RegisterSingletonInstance<ILog>(consoleLog);
 
             // replace registration of ILog to ConsoleLog (instead of FileLog) in another container. 
-            IDependencyInjectionContainer anotherContainer = containerBuilder.Build();
+            var anotherContainer = containerBuilder.Build();
 
             // resolve org from another Container.
             IOrg orgWithConsoleLog = anotherContainer.Resolve<IOrg>();
@@ -137,7 +137,7 @@ namespace AutofacAdapterTests
             orgWithConsoleLog.LogOrgInfo();
 
             containerBuilder.RegisterFactoryMethod(CreateOrg);
-            IDependencyInjectionContainer container3 = containerBuilder.Build();
+            var container3 = containerBuilder.Build();
             container3.TestOrg(false);
 
 
@@ -174,7 +174,7 @@ namespace AutofacAdapterTests
             container3 = containerBuilder.Build();
             container3.TestOrg(false, "TheOrg");
 
-            IContainerBuilder containerBuilder4 = new AutofacContainerBuilder();
+            var containerBuilder4 = new AutofacContainerBuilder();
 
             containerBuilder4.RegisterAttributedClass(typeof(AnotherOrg));
             containerBuilder4.RegisterAttributedClass(typeof(AnotherPerson));
@@ -200,7 +200,7 @@ namespace AutofacAdapterTests
             // make sure ILog is a singleton.
             container4.IsSingleton<ILog>().Should().BeTrue();
 
-            IContainerBuilder containerBuilder5 = new AutofacContainerBuilder();
+            var containerBuilder5 = new AutofacContainerBuilder();
 
             containerBuilder5.RegisterAttributedStaticFactoryMethodsFromClass(typeof(FactoryMethods));
 
